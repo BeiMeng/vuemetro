@@ -8,6 +8,14 @@ import Vue from 'vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+
+import TokenAuth from './utils/TokenAuth'
+//window.tokenAuth=new TokenAuth('LocalStorageStore')
+window.tokenAuth=new TokenAuth('Cookie')
+
+import HttpClient from './utils/HttpClient'
+window.httpClient=HttpClient
+
 //引入全局自定义样式
 import './style/index.css'
 
@@ -23,6 +31,7 @@ import store from './store/index'
 
 //设置ElementUI 组件库 组件大小，以及模拟弹窗的zIndex 值
 Vue.use(ElementUI, { size: 'small', zIndex: 100000 });
+
 
 
 

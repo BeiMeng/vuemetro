@@ -36,6 +36,9 @@
     async mounted() {
         //解决jquery监听事件在二级路由无响应问题
         this.$nextTick(async () => {
+            require('../../assets/layouts/layout4/css/layout.css')
+            require('../../assets/layouts/layout4/css/themes/light.css')
+            require('../../assets/layouts/layout4/css/custom.css')          
             require('../../assets/global/scripts/app.js')
             require('../../assets/layouts/layout4/scripts/layout.js')
             require('../../assets/layouts/layout4/scripts/demo.js')

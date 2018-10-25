@@ -1,5 +1,16 @@
 
-export default [{ 
+export default [
+//         {
+//     path: '/login',
+//     name: 'login',
+//     component: resolve => {
+//         require.ensure([],
+//             () => {
+//                 resolve(require('../view/passport/login.vue'))
+//             })
+//     }
+//   },
+  { 
     path: '/',
     name: 'helloWorld',   
     component: resolve => {

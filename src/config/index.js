@@ -2,9 +2,7 @@
 class Config {
     constructor() {
         this.isDebug = process && process.isDebug
-        this.apiHost = this.isDebug ? '//localhost:16240' : ''
-        this.apiHostName = this.apiHost.replace('//', '') 
-
+        this.serverUrl = 'http://localhost:8888'
         this.showHeaderMenus=true     //是否有顶部菜单
         this.showThemeSetting=true    //是否显示主题设置
         this.showNotifications=true    //是否显示通知

@@ -54,8 +54,8 @@
             }
         },
         mounted() {
-            this.$store.dispatch('getSideBarMenu', 123456).then(() => {
-            // 从this.$store.state.sideBar.sideBarMenu 找到首页 和默认展示页
+            // this.$store.dispatch('getSideBarMenu', 123456).then(() => {
+            // // 从this.$store.state.sideBar.sideBarMenu 找到首页 和默认展示页
             let mainPage={
                 title:'首页',
                 name:'helloWorld',
@@ -75,7 +75,7 @@
             this.$store.dispatch('addView', defaultPage)
             this.$store.commit('SET_SELECTEDMENUSTATE',defaultPage)                
             this.$router.push(defaultPage.path)            
-            }).catch(() => {})
+            // }).catch(() => {})
         }
     }
 </script>

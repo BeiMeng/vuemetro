@@ -21,18 +21,18 @@
                     </a>
                 </li>
                 <li>
-                    <a href="app_todo_2.html">
+                    <a href="javascript:;">
                         <i class="icon-rocket"></i> My Tasks
                         <span class="badge badge-success"> 7 </span>
                     </a>
                 </li>
                 <li class="divider"> </li>
                 <li>
-                    <a href="page_user_lock_1.html">
+                    <a href="javascript:;">
                         <i class="icon-lock"></i> Lock Screen </a>
                 </li>
                 <li>
-                    <a href="page_user_login_1.html">
+                    <a href="javascript:;" @click="logOut">
                         <i class="icon-key"></i> Log Out </a>
                 </li>
             </ul>
@@ -43,6 +43,12 @@
     export default {
         name: "userOper",
         components: {
+        },
+        methods:{
+            logOut(){
+                tokenAuth.removeToken();
+                this.$router.push('/login')
+            }
         }
     }
 </script>
