@@ -16,6 +16,11 @@ export default {
   },
   mounted(){
     console.log(this.$route.params.id)
+                let d=httpClient({
+                    url: '/user/info',
+                    method: 'get',
+                    params: { token:'123456789' }
+                })       
   },
     watch: {
         $route() {

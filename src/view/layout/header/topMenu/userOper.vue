@@ -47,7 +47,9 @@
         methods:{
             logOut(){
                 tokenAuth.removeToken();
-                this.$router.push('/login')
+                //this.$router.push('/login')
+                //强制刷新页面,因为token已经清除了，自动会跳转到登陆页面(解决引用外部js失效问题)
+                location.reload()
             }
         }
     }

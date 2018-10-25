@@ -45,7 +45,7 @@
             require('../../assets/layouts/global/scripts/quick-sidebar.js')
             require('../../assets/layouts/global/scripts/quick-nav.js')
         })
-    },    
+    },   
     data(){
       return{
         showFooter:config.showFooter,

@@ -15,7 +15,6 @@ export default {
     }
   },
   mounted(){
-    console.log(888)
   },
   methods: {
     open() {

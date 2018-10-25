@@ -115,21 +115,15 @@
                 this.forgetShow = show
             },
             login() {
-                console.log(this.$router)
-                tokenAuth.setToken('123456789')
-                let d=httpClient({
-                    url: '/user/info',
-                    method: 'get',
-                    params: { token:'123456789' }
-                })                
+                tokenAuth.setToken('123456789')             
                 this.$router.push('/');
 
 
                 //重新登陆后,加载默认展示页,此功能暂时无
-                if(this.redirect !=''){
+                // if(this.redirect !=''){
                     
-                    return;
-                }                
+                //     return;
+                // }                
             }
         }
     }

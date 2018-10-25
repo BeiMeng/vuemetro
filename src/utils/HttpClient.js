@@ -8,14 +8,14 @@ const HttpClient = axios.create({
   })
 
 
-  console.log(tokenAuth)
 //请求拦截 request interceptor(设置token，jwt格式)
 HttpClient.interceptors.request.use(
     config => {
-      console.log(tokenAuth)
+      
       let token=tokenAuth.getToken();
       if(token!=null){
-        config.headers['Authorization'] ='Bearer ' + getToken()  //也可以通过配置自定义格式
+        console.log(tokenAuth.getToken())
+        config.headers['Authorization'] ='Bearer ' + token  //也可以通过配置自定义格式
       }
       return config
     },
