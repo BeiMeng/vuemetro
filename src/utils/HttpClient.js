@@ -14,7 +14,6 @@ HttpClient.interceptors.request.use(
       
       let token=tokenAuth.getToken();
       if(token!=null){
-        console.log(tokenAuth.getToken())
         config.headers['Authorization'] ='Bearer ' + token  //也可以通过配置自定义格式
       }
       return config
@@ -38,6 +37,7 @@ HttpClient.interceptors.request.use(
      */
     response => {
       console.log(response)             //401 未授权登出   //500 内部错误 转到错误页   //200  判断业务code 进行相应处理，比如处理多端登陆等
+      return response.data
     },
     error => {
       console.log('err' + error) // for debug

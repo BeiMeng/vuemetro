@@ -1,21 +1,27 @@
 <template>
-  <div id="demo2">
-    {{msg}}
-      hahaahaahhh<el-button type="primary" @click="open">主要按钮</el-button>
+  <div id="demo3">
+      {{msg}}
+      demo3<el-button type="primary" @click="open">主要按钮</el-button>
       <el-button type="primary" @click="gooo">带参路由</el-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'demo2',
+  name: 'demo3',
   data(){
-    return{
-      msg:'啊啊啊啊啊啊啊啊'
-    }
+      return{
+          msg:'啊哈哈哈'
+      }
   },
   mounted(){
+    console.log(this.$route.params.id)      
   },
+    watch: {
+        $route() {
+           console.log(this.$route.params.id)
+        }
+    },  
   methods: {
     open() {
       this.$alert('这是一段内容', '标题名称', {
@@ -30,6 +36,7 @@ export default {
     },
     gooo(){
       this.msg="哈啊哈哈哈哈888"
+      //this.$router.push('/demo3/3')
     }
   }
 }

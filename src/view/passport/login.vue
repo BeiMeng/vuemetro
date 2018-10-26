@@ -115,8 +115,19 @@
                 this.forgetShow = show
             },
             login() {
-                tokenAuth.setToken('123456789')             
-                this.$router.push('/');
+                httpClient.post('/api/TokenAuth/Authenticate', 
+                    {
+                        usernameOrEmailAddress:'admin',
+                        password:'123qwe'
+                    }
+                )
+                .then(response=>{               
+                    tokenAuth.setToken(response.result.accessToken)             
+                    this.$router.push('/');                   
+                })
+                .catch(function (error) {
+                    console.error(error);
+                });                
 
 
                 //重新登陆后,加载默认展示页,此功能暂时无

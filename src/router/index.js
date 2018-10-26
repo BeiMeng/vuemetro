@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 
 
-import auth from '../router/auth'
+import auth from '../router/demo'
 import sys from '../router/sys'
 
 Vue.use(Router)

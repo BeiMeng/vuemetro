@@ -16,7 +16,7 @@ export default [
     component: resolve => {
         require.ensure([],
             () => {
-                resolve(require('../view/auth/HelloWorld.vue'))
+                resolve(require('../view/demo/HelloWorld.vue'))
             })
     },
 },{ 
@@ -25,7 +25,7 @@ export default [
     component: resolve => {
         require.ensure([],
             () => {
-                resolve(require('../view/auth/demo.vue'))
+                resolve(require('../view/demo/demo.vue'))
             })
     },
 },{ 
@@ -34,7 +34,7 @@ export default [
     component: resolve => {
         require.ensure([],
             () => {
-                resolve(require('../view/auth/demo2.vue'))
+                resolve(require('../view/demo/demo2.vue'))
             })
     },
 },{ 
@@ -43,7 +43,7 @@ export default [
     component: resolve => {
         require.ensure([],
             () => {
-                resolve(require('../view/auth/demo3.vue'))
+                resolve(require('../view/demo/demo3.vue'))
             })
     },
 }]
