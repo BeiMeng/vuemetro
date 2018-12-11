@@ -115,6 +115,8 @@
                 this.forgetShow = show
             },
             login() {
+                    tokenAuth.setToken("response.result.accessToken")             
+                    this.$router.push('/');                 
                 httpClient.post('/api/TokenAuth/Authenticate', 
                     {
                         usernameOrEmailAddress:'admin',

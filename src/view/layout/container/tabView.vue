@@ -2,10 +2,10 @@
     <div id="tabView" class="tabView">
         <div class="tabbable-line" style="background-color:white">
             <ul class="nav nav-tabs " ref="tab">
-                <li v-for="tag in Array.from(visitedViews)" ref="tag" :class="isActive(tag)?'active':''" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
+                <li v-for="tag in Array.from(visitedViews)" ref="tag" :class="isActive(tag)?'active tabLink':'tabLink'" :key="tag.path" @contextmenu.prevent.native="openMenu(tag,$event)">
                     <i :class="`${tag.icon}`"></i>
-                    <a href="#tab_15_2" data-toggle="tab" aria-expanded="false" @click="clickLink(tag,$event)"> {{ tag.title }} </a>
-                    <i class="fa fa-close el-icon-close" v-show="isActive(tag) && !tag.notClose" @click.prevent.stop="closeSelectedTag(tag)" />
+                    <a href="#tab_15_2" data-toggle="tab" class="tabLink" aria-expanded="false" @click="clickLink(tag,$event)"> {{ tag.title }} </a>
+                    <i class="el-message-box__close el-icon-close" v-show="isActive(tag) && !tag.notClose" @click.prevent.stop="closeSelectedTag(tag)" />
                 </li>
             </ul>
             <contextMenu host="tab" :itemArray="contextMenu" @indexChange="handleIndexChange"></contextMenu>
@@ -223,7 +223,7 @@
     .tabView .tabbable-line .nav li:first-child {
         margin-left: 10px;
     }
-    .el-icon-close {
+    /* .tabView .el-icon-close {
         width: 16px;
         height: 16px;
         vertical-align: 2px;
@@ -232,13 +232,17 @@
         transition: all .3s cubic-bezier(.645, .045, .355, 1);
         transform-origin: 100% 50%;
     }
-    .el-icon-close:before {
+    .tabView .el-icon-close:before {
         transform: scale(.6);
         display: inline-block;
         vertical-align: -3px;
-    }
-    .el-icon-close:hover {
+    } */
+    .tabView .el-icon-close:hover {
+        vertical-align: 0px;
         background-color: #b4bccc;
         color: #fff;
+    }
+    .tabLink{
+        cursor: pointer !important;
     }
 </style>

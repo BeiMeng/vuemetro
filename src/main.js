@@ -29,6 +29,8 @@ import router from './router'
 //引入状态库文件
 import store from './store/index'
 
+import './directives/dialogDrag'
+
 import './auth'
 
 //设置ElementUI 组件库 组件大小，以及模拟弹窗的zIndex 值

@@ -4,9 +4,9 @@
             <div class="page-footer-inner"> 2014 &copy; Create by BeiDream.
                 <a href="http://www.github.com/BeiMeng" title="基于Vue Cli 的Metronic 模板" target="_blank">BeiDream Vue Metronic!</a>
             </div>
-            <div class="scroll-to-top">
+            <!-- <div class="scroll-to-top">
                 <i class="icon-arrow-up"></i>
-            </div>
+            </div> -->
       </div>
   </div>
 </template>

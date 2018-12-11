@@ -14,15 +14,18 @@
                         <breadcrumb v-if="showBreadcrumb"></breadcrumb>
                         <!-- END PAGE BREADCRUMB -->  
                     </div>
-
-                    <transition name="fade-transform" mode="out-in">
-                        <!-- keep-alive 的 include 默认是优先匹配组件的 name ，所以在编写路由 router 和路由对应的 view component 的时候一定要确保 两者的 name 是完全一致的。
-                        (切记 name 命名时候尽量保证唯一性 切记不要可某些组件的命名重复了，不然会递归引用最后内存溢出等问题) -->
-                        <!-- 关闭tab页标签，会清除缓存，再次打开重新刷新页面 -->
-                        <keep-alive :include="cachedViews">                           
-                            <router-view></router-view>
-                        </keep-alive>                            
-                    </transition>               
+                    <el-scrollbar class="main-scrollbar">
+                        <toTop></toTop>
+                        <transition name="fade-transform" mode="out-in">
+                            <!-- keep-alive 的 include 默认是优先匹配组件的 name ，所以在编写路由 router 和路由对应的 view component 的时候一定要确保 两者的 name 是完全一致的。
+                            (切记 name 命名时候尽量保证唯一性 切记不要可某些组件的命名重复了，不然会递归引用最后内存溢出等问题) -->
+                            <!-- 关闭tab页标签，会清除缓存，再次打开重新刷新页面 -->
+                            <keep-alive :include="cachedViews">                           
+                                <router-view></router-view>
+                            </keep-alive>                            
+                        </transition> 
+                    </el-scrollbar>
+              
                     
                 </div>
                 <!-- END CONTENT BODY -->
@@ -43,13 +46,15 @@ import sidebar from './sidebar/index'
 import breadcrumb from './breadcrumb'
 import tabView from './tabView'
 import quickSidebar from './quickSidebar'
+import toTop from '../../../components/toTop'
 export default {
   name: 'pageContainer',
   components:{
       sidebar,
       breadcrumb,
       tabView,
-      quickSidebar
+      quickSidebar,
+      toTop
   }, 
   computed: {
     cachedViews() {
@@ -71,12 +76,23 @@ export default {
 <style>
   .page-container{
      margin-top:60px !important;
-     padding-right: 15px !important;
+     padding-right: 10px !important;
      padding-left: 10px !important;
  }
  .page-content{
      padding-top: 0px !important;
      padding-left: 10px !important;
+     height: calc(100vh - 160px) !important;
+ }
+ .main-scrollbar{
+     height: 100%;
+     margin-top: 10px;
+ }
+ .el-scrollbar__wrap{
+  overflow-x: hidden;
+} 
+ .el-scrollbar__bar.is-horizontal{
+   display: none !important;
  } 
  @media (min-width: 992px){
     .page-sidebar-fixed .page-sidebar {
