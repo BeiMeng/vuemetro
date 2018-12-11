@@ -12,9 +12,10 @@ function getMenus(config) {
       name:'helloWorld',     //路由定义的name,缓存路由页面查找使用
       icon: 'icon-diamond',
       path: '/',     //对应路由路径
-      showTab:true,  //是否初始化显示到tab页标签上
+      showTab:true,   //是否初始化显示到tab页标签上
       default:false, //是否是初始化默认显示页
-      notClose:true, //是否在tab页标签上显示可关闭按钮      
+      notClose:true, //是否在tab页标签上显示可关闭按钮
+      isHome:true    //是否首页,不进入header页签  
     },
     {
       title: '商品管理',
@@ -62,17 +63,18 @@ function getMenus(config) {
       title: '测试管理',
       name:'aaa8',
       icon: 'icon-diamond',
+      default:true,
       group: true,    //只有顶级菜单项才可以设置分组选项
       children: [{
           title: '日志管理',
           name:'aaa9',
           icon: 'icon-diamond',
-          default:false,
+          default:true,
           children: [{
               title: '商品管理2',
               name:'aaa10',
               icon: 'icon-diamond',
-              default:false,
+              default:true,
               children: [{
                   title: '订单管理3',
                   name:'demo2',
@@ -123,7 +125,7 @@ function getMenus(config) {
     {
       title: '系统配置',
       name:'aaa17',
-      icon: '',
+      icon: 'icon-diamond',
       default:false,
       group: true,
       children: [{

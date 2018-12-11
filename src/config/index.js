@@ -14,7 +14,7 @@ class Config {
         this.showBreadcrumb=false      //是否显示页面面包屑导航
         this.showPageTab = true       //是否显示tab页标签
 
-        //todo 暂未实现
+        //todo false暂未实现
         this.showTabTogether=true    //子模块tab菜单是否展示一起(仅this.showPageTab = true有效)
 
         this.showFooter=false          //是否显示页脚

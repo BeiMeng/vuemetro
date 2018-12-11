@@ -38,6 +38,7 @@
 <script>
     import axios from "axios"
     import sidebarItem from './sidebarItem'
+    import config from '../../../../config/index.js'
     export default {
         name: "Sidebar",
         components: {
@@ -54,25 +55,36 @@
             }
         },
         mounted() {
-              let mainPage={
-                  title:'首页',
-                  name:'helloWorld',
-                  path:'/',
-                  icon:'icon-diamond',
-                  notClose:true,
-                  default:false,
-              };
-              let defaultPage={
-                    title: '订单管理3',
-                    name:'demo2',
-                    icon: 'icon-diamond',
-                    path: '/demo2',
-                    default:true,
-                  };
-              this.$store.dispatch('addView', mainPage)
-              this.$store.dispatch('addView', defaultPage)
-              this.$store.commit('SET_SELECTEDMENUSTATE',defaultPage)                
-              this.$router.push(defaultPage.path)
+            if(config.showHeaderMenus){ //展示头部菜单则在头部菜单加载
+                return
+            }
+            let homePage=this.menus.find(p=>p.isHome);
+            if(homePage!=undefined){
+               this.$store.dispatch('addView', homePage)
+            }
+            //todo 找到默认的菜单叶节点
+            let defaultMain=this.menus.find(p=>p.default);
+            if(defaultMain!=undefined){
+                let defaultPage=loopFindDefaultPage(defaultMain);
+                this.$store.dispatch('addView', defaultPage)
+                this.$store.commit('SET_SELECTEDMENUSTATE',defaultPage)                
+                this.$router.push(defaultPage.path)  
+            }
+
+            
+            function loopFindDefaultPage(mn){
+                for (let index = 0; index < mn.children.length; index++) {
+                    const element = mn.children[index];
+                    if(element.default){
+                        if(element.hasOwnProperty('children')){
+                            return loopFindDefaultPage(element)
+                        }else{
+                            return element
+                        }
+                    }
+                }                
+            }            
+
         }
     }
 </script>

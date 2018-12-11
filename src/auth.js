@@ -1,5 +1,5 @@
 //登陆认证处理
-
+import { Message } from 'element-ui'
 import router from './router/index'
 import store from './store/index'
 //引入nprogress
@@ -32,8 +32,9 @@ router.beforeEach((to, from, next) => {
     }
   }else{   //已登陆
     if(store.state.sideBar.sideBarMenu.length==0){    //判断侧边菜单数据是否有
-        store.dispatch('getSideBarMenu', token).then(() => {    //第一次登陆或者是强制刷新浏览器重新请求
+        store.dispatch('getAllMenus', token).then(() => {    //第一次登陆或者是强制刷新浏览器重新请求
             if(!pageAuth(to.path)){
+              Message.error('您没有当前页面的访问权限！');
               //页面没有访问权限直接回到前一个页面
               next(`${from.path}`)
               NProgress.done()
@@ -43,6 +44,7 @@ router.beforeEach((to, from, next) => {
         }).catch(() => {})      
     }else{
       if(!pageAuth(to.path)){
+        Message.error('您没有当前页面的访问权限！');
         //页面没有访问权限直接回到前一个页面
         next(`${from.path}`)
         NProgress.done()

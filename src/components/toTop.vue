@@ -3,7 +3,6 @@
         <div class="scroll-to-top" @click="goTop" v-show="show">
                 <i class="icon-arrow-up"></i>
         </div>
-        <!-- <el-button v-show="show" class="btn v1-shadow" :type="plain?'':'primary'" icon="el-icon-arrow-up" circle @click="goTop"></el-button> -->
     </transition>
 </template>
 
@@ -23,7 +22,6 @@ export default {
     },
     methods: {
         handleScroll() {
-            console.log(1111);
             let ele=this.$parent.$refs['wrap'];
             var scrollTop =
                 ele.pageYOffset ||

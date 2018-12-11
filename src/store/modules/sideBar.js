@@ -1,13 +1,21 @@
 import axios from "axios"
+import config from '../../config/index'
 const sideBar = {
   state: {
     sideBarMenu: [],
-    tabMenus: []
+    headerMenus: []
   },
   mutations: {
     SET_SIDEBARMENU(state, menus) {
-      state.sideBarMenu = menus
+      if(config.showHeaderMenus){
+        state.headerMenus=menus
+      }else{
+        state.sideBarMenu = menus
+      }
     },
+    SET_HEADERMENUSIDEBARMENU(state, menus) {
+        state.sideBarMenu = menus
+    },   
     SET_SELECTEDMENUSTATE(state, itemMenu) {
       //先全部设置为未选中状态
       for (let index = 0; index < state.sideBarMenu.length; index++) {
@@ -128,7 +136,7 @@ const sideBar = {
     }
   },
   actions: {
-    getSideBarMenu({
+    getAllMenus({
       commit,
       state
     }, userId) {
@@ -147,7 +155,13 @@ const sideBar = {
             reject(error)
           })
       })
-    }
+    },
+    setSideBarMenu({
+      commit,
+      state
+    },headerMenuOfSideBarMenus) {
+      commit('SET_HEADERMENUSIDEBARMENU', headerMenuOfSideBarMenus)
+    }    
   }
 }
 
