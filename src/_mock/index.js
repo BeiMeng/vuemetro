@@ -150,6 +150,13 @@ function getMenus(config) {
           ]
         },
         {
+          title: '菜单管理',
+          name:'menusManage',
+          icon: 'icon-diamond',
+          path: '/menusManage',
+          default:false,
+        },
+        {
           title: '权限管理2',
           name:'aaa21',
           icon: 'icon-diamond',

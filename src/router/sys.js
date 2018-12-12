@@ -16,4 +16,13 @@ export default [{
                 resolve(require('../view/sys/sys2.vue'))
             })
     },
+},{ 
+    path: '/menusManage',
+    name: 'menusManage',
+    component: resolve => {
+        require.ensure([],
+            () => {
+                resolve(require('../view/sys/menusManage.vue'))
+            })
+    },
 }]
