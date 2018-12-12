@@ -1,3 +1,4 @@
+import Vue from 'vue'
 import axios from "axios"
 import config from '../../config/index'
 const sideBar = {
@@ -17,7 +18,49 @@ const sideBar = {
         state.sideBarMenu = menus
     },   
     SET_SELECTEDMENUSTATE(state, itemMenu) {
-      //先全部设置为未选中状态
+
+       //有顶部菜单且有tab页签时，实现切换tab页签，跳转到对应的顶部菜单以及侧边菜单的切换
+       if(config.showHeaderMenus){
+        //1.判断此tab页是否在state.sideBarMenu 中
+        let menu=loopFindDefaultPage(state.sideBarMenu,itemMenu)
+        //不在,在state.headerMenus 找到   
+        if(menu==undefined){
+          for (let index = 0; index < state.headerMenus.length; index++) {
+            const element = state.headerMenus[index];
+            Vue.set(element,"default",false);
+            if(element.hasOwnProperty('children')){
+              let menu=loopFindDefaultPage(element.children,itemMenu)
+              if(menu!=undefined){
+                state.sideBarMenu=element.children;
+                Vue.nextTick(()=>{
+                  Vue.set(element,"default",true);
+                })
+              }
+            }
+          }
+        }       
+       }
+       function loopFindDefaultPage(mn,itemMenu){
+        for (let index = 0; index < mn.length; index++) {
+            const element = mn[index];
+            if(!element.hasOwnProperty('children')){
+              if(element.title==itemMenu.title){
+                return element;
+              }
+            }else{
+              let val= loopFindDefaultPage(element.children,itemMenu)
+              if(val!=undefined){
+                return val
+              }else{
+                continue
+              }
+            }
+        }                
+       } 
+
+
+
+      //先全部设置为未选中状态      
       for (let index = 0; index < state.sideBarMenu.length; index++) {
         const element = state.sideBarMenu[index];
         if (element.title == itemMenu.title) {

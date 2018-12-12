@@ -26,6 +26,11 @@ export default {
     },
     methods:{
         headerMenuClick(menu){
+
+            this.$nextTick(()=>{
+                this.$set(menu,"default",true);
+            })
+
             this.$store.dispatch('setSideBarMenu', menu.children)
 
             let defaultPage=this.getDefaultPage(menu);
