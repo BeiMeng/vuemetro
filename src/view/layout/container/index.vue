@@ -82,11 +82,12 @@ export default {
  .page-content{
      padding-top: 0px !important;
      padding-left: 10px !important;
-     height: calc(100vh - 160px) !important;
+     height: calc(100vh - 140px) !important;
  }
  .main-scrollbar{
      height: 100%;
      margin-top: 10px;
+     background-color: #fff;
  }
  .el-scrollbar__wrap{
   overflow-x: hidden;

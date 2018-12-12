@@ -35,6 +35,7 @@
 </template>
 
 <script>
+  import axios from "axios"
   import treeTable from '@/components/treeTable'
   export default {
     name:'MenusManage',
@@ -45,105 +46,40 @@
       return {
         columns: [
             {
-            text: '事件',
-            value: 'event',
-            width: 200
+                text: '名称',
+                value: 'title',
+                width: 200
             },
             {
-            text: 'ID',
-            value: 'id'
+                text: '路由name',
+                value: 'name'
             },
             {
-            text: '时间线',
-            value: 'timeLine'
+                text: '路由路径',
+                value: 'path'
             },
             {
-            text: '备注',
-            value: 'comment'
+                text: '图标',
+                value: 'icon'
+            },
+            {
+                text: '是否默认显示到标签',
+                value: 'showTab'
+            },
+            {
+                text: '是否默认显示页',
+                value: 'default'
+            },
+            {
+                text: '页签是否可关闭',
+                value: 'notClose'
+            },
+            {
+                text: '是否首页',
+                value: 'isHome'
             }
         ],
-        data: [
-            {
-            id: 0,
-            event: '事件1',
-            timeLine: 50,
-            comment: '无'
-            },
-            {
-            id: 1,
-            event: '事件1',
-            timeLine: 100,
-            comment: '无',
-            children: [
-                {
-                id: 2,
-                event: '事件2',
-                timeLine: 10,
-                comment: '无'
-                },
-                {
-                id: 3,
-                event: '事件3',
-                timeLine: 90,
-                comment: '无',
-                children: [
-                    {
-                    id: 4,
-                    event: '事件4',
-                    timeLine: 5,
-                    comment: '无'
-                    },
-                    {
-                    id: 5,
-                    event: '事件5',
-                    timeLine: 10,
-                    comment: '无'
-                    },
-                    {
-                    id: 6,
-                    event: '事件6',
-                    timeLine: 75,
-                    comment: '无',
-                    children: [
-                        {
-                        id: 7,
-                        event: '事件7',
-                        timeLine: 50,
-                        comment: '无',
-                        children: [
-                            {
-                            id: 71,
-                            event: '事件71',
-                            timeLine: 25,
-                            comment: 'xx'
-                            },
-                            {
-                            id: 72,
-                            event: '事件72',
-                            timeLine: 5,
-                            comment: 'xx'
-                            },
-                            {
-                            id: 73,
-                            event: '事件73',
-                            timeLine: 20,
-                            comment: 'xx'
-                            }
-                        ]
-                        },
-                        {
-                        id: 8,
-                        event: '事件8',
-                        timeLine: 25,
-                        comment: '无'
-                        }
-                    ]
-                    }
-                ]
-                }
-            ]
-            }
-        ]
+        data: []
       };
     },
 
@@ -156,7 +92,19 @@
 
     computed: {},
 
-    mounted(){},
+    mounted(){
+         axios
+          .get("/auth/menus", {
+            params: {
+              id: 1
+            }
+          })
+          .then(result => {
+            this.data=result.data
+          })
+          .catch(error => {
+          })       
+    },
 
     methods: {}
   }

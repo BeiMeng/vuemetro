@@ -4,8 +4,8 @@
       <template slot-scope="scope">
         <span v-for="space in scope.row._level" :key="space" class="ms-tree-space"/>
         <span v-if="iconShow(0,scope.row)" class="tree-ctrl" @click="toggleExpanded(scope.$index)">
-          <i v-if="!scope.row._expanded" class="el-icon-plus"/>
-          <i v-else class="el-icon-minus"/>
+          <i v-if="!scope.row._expanded" class="el-icon-plus icon-new"/>
+          <i v-else class="el-icon-minus icon-new"/>
         </span>
         {{ scope.$index }}
       </template>
@@ -16,8 +16,8 @@
         <!-- eslint-disable-next-line vue/no-confusing-v-for-v-if -->
         <span v-for="space in scope.row._level" v-if="index === 0" :key="space" class="ms-tree-space"/>
         <span v-if="iconShow(index,scope.row)" class="tree-ctrl" @click="toggleExpanded(scope.$index)">
-          <i v-if="!scope.row._expanded" class="el-icon-plus"/>
-          <i v-else class="el-icon-minus"/>
+          <i v-if="!scope.row._expanded" class="el-icon-plus icon-new"/>
+          <i v-else class="el-icon-minus icon-new"/>
         </span>
         {{ scope.row[column.value] }}
       </template>
@@ -117,7 +117,10 @@ export default {
   table td {
     line-height: 26px;
   }
-
+  .icon-new{
+    font-weight: bold;
+    font-size: 14px;
+  }
   .tree-ctrl{
     position: relative;
     cursor: pointer;
