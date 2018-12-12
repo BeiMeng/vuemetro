@@ -14,11 +14,10 @@
 </template>
 
 <script>
-    import contextMenu from '../../../components/contextMenu.vue'
     export default {
         name: "tabView",
         components: {
-            contextMenu
+
         },
         data() {
             return {

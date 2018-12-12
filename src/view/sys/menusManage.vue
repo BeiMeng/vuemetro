@@ -28,7 +28,50 @@
             </div>
         </div>
         <div class="portlet-body">
-             <tree-table :data="data" :columns="columns" border/>
+             <tree-table :data="data" :columns="columns" border>
+                <el-table-column label="显示图标" width="100" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <i :class="scope.row.icon"></i>
+                    </template>
+                </el-table-column>   
+                <el-table-column label="是否默认显示到标签" width="200" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <span v-if="scope.row.path==null"></span>
+                        <el-tag type="success" v-else-if="scope.row.showTab">是</el-tag>
+                        <el-tag type="danger" v-else>否</el-tag>
+                    </template>
+                </el-table-column>   
+                <el-table-column label="是否默认显示页" width="200" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <span v-if="scope.row.path==null"></span>
+                        <el-tag type="success" v-else-if="scope.row.default">是</el-tag>
+                        <el-tag type="danger" v-else>否</el-tag>
+                    </template>
+                </el-table-column> 
+                <el-table-column label="页签是否不可关闭" width="200" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <span v-if="scope.row.path==null"></span>
+                        <el-tag type="success" v-else-if="scope.row.notClose">是</el-tag>
+                        <el-tag type="danger" v-else>否</el-tag>
+                    </template>
+                </el-table-column> 
+                <el-table-column label="是否首页" width="200" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <span v-if="scope.row.path==null"></span>
+                        <el-tag type="success" v-else-if="scope.row.isHome">是</el-tag>
+                        <el-tag type="danger" v-else>否</el-tag>
+                    </template>
+                </el-table-column>                                                                               
+                <el-table-column label="操作" width="200" header-align="center" align="center">
+                    <template slot-scope="scope">
+                        <el-row>
+                            <el-button type="success" icon="el-icon-plus" circle title="添加子节点" v-if="!scope.row.isHome"></el-button>                            
+                            <el-button type="primary" icon="el-icon-edit" circle title="编辑" @click="editNode(scope.row.id)"></el-button>
+                            <el-button type="danger" icon="el-icon-delete" circle title="删除" v-if="!scope.row.isHome"></el-button>
+                        </el-row>
+                    </template>
+                </el-table-column>                 
+             </tree-table>
         </div>
     </div>
   </div>
@@ -36,11 +79,10 @@
 
 <script>
   import axios from "axios"
-  import treeTable from '@/components/treeTable'
   export default {
-    name:'MenusManage',
+    name:'menusManage',
     components: {
-        treeTable
+
     },
     data () {
       return {
@@ -57,26 +99,6 @@
             {
                 text: '路由路径',
                 value: 'path'
-            },
-            {
-                text: '图标',
-                value: 'icon'
-            },
-            {
-                text: '是否默认显示到标签',
-                value: 'showTab'
-            },
-            {
-                text: '是否默认显示页',
-                value: 'default'
-            },
-            {
-                text: '页签是否可关闭',
-                value: 'notClose'
-            },
-            {
-                text: '是否首页',
-                value: 'isHome'
             }
         ],
         data: []
@@ -106,7 +128,11 @@
           })       
     },
 
-    methods: {}
+    methods: {
+        editNode(id){
+            alert(id)
+        }
+    }
   }
 
 </script>

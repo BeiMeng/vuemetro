@@ -10,7 +10,7 @@
         {{ scope.$index }}
       </template>
     </el-table-column>
-    <el-table-column v-for="(column, index) in columns" v-else :key="column.value" :label="column.text" :width="column.width">
+    <el-table-column v-for="(column, index) in columns" v-else :key="column.value" :label="column.text" :width="column.width" header-align="center" :align="column.align">
       <template slot-scope="scope">
         <!-- Todo -->
         <!-- eslint-disable-next-line vue/no-confusing-v-for-v-if -->
@@ -33,7 +33,7 @@
 */
 import treeToArray from './eval'
 export default {
-  name: 'TreeTable',
+  name: 'treeTable',
   props: {
     /* eslint-disable */
     data: {

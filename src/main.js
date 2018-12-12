@@ -29,6 +29,8 @@ import router from './router'
 //引入状态库文件
 import store from './store/index'
 
+import './components/index'
+
 import './directives/dialogDrag'
 
 import './auth'

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-    name: 'ContextMenu',
+    name: 'contextMenu',
     data() {
         return {
             top: '0px',
@@ -88,7 +88,7 @@ export default {
     position: relative;
     margin: 0;
     padding-left: 0;
-    background-color: white;
+     background-color: #fff;
 }
 
 .contextMenu > .menu > .item {
