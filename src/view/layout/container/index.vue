@@ -7,7 +7,7 @@
             <!-- BEGIN CONTENT -->
             <div class="page-content-wrapper">
                 <!-- BEGIN CONTENT BODY -->
-                <div class="page-content">
+                <div class="page-content" :style="styleObject">
                     <div class="all-page-header">
                         <tabView v-if="showPageTab"></tabView>
                         <!-- BEGIN PAGE BREADCRUMB -->
@@ -66,9 +66,19 @@ export default {
           showBreadcrumb:config.showBreadcrumb,
           showPageTab:config.showPageTab,
           showQuickSideBar:config.showQuickSideBar,
-          maxTabCount:config.maxTabCount
+          maxTabCount:config.maxTabCount,
+          styleObject:{
+              height: 'calc(100vh - 140px) !important',
+          }
       }
   },
+  mounted(){
+      if(this.showPageTab){
+          this.$set(this.styleObject,'height','calc(100vh - 140px) !important')
+      }else{
+          this.$set(this.styleObject,'height','calc(100vh - 85px) !important')
+      }
+  }
   
 }
 </script>
@@ -82,12 +92,10 @@ export default {
  .page-content{
      padding-top: 0px !important;
      padding-left: 10px !important;
-     height: calc(100vh - 140px) !important;
+     /* height: calc(100vh - 140px) !important; */
  }
  .main-scrollbar{
      height: 100%;
-     margin-top: 10px;
-     background-color: #fff;
  }
  .el-scrollbar__wrap{
   overflow-x: hidden;

@@ -210,6 +210,9 @@
 </style>
 
 <style>
+    .tabView{
+        margin-bottom: 10px;
+    }
     .tabView .tabbable-line a {
         line-height: 40px !important;
         display: inline;
